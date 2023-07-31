@@ -6,7 +6,9 @@ const routes = express.Router()
 
 const registerController = require('../Controller/registerLoginController')
 const categoryController = require('../Controller/categoryController')
-
+const SubcategoryController = require('../Controller/subCategoryController')
+const ProductController = require('../Controller/productController')
+const fileupload = require('../config/fileupload')
 
 // Register And login
 routes.post('/insertdata',registerController.insertdata)
@@ -17,6 +19,22 @@ routes.post('/login',registerController.login)
 
 //Category
 routes.post('/addcategory',categoryController.addcategory)
+routes.get('/viewcategory',passport.authenticate('jwt', { session: false }),categoryController.viewcategory)
+routes.delete('/deletecategory',categoryController.deletecategory)
+routes.put('/editcategory',categoryController.editcategory)
+
+//SubCategory
+routes.post('/addsubcategory',SubcategoryController.addsubcategory)
+routes.get('/viewsubcategory',passport.authenticate('jwt', { session: false }),SubcategoryController.viewsubcategory)
+routes.delete('/deletesubcategory',SubcategoryController.deletesubcategory)
+routes.put('/editsubcategory',SubcategoryController.editsubcategory)
+
+//Product
+routes.post('/addproduct',fileupload,ProductController.addproduct)
+routes.get('/viewproduct',ProductController.viewproduct)
+routes.delete('/deleteproduct',ProductController.deleteproduct)
+routes.put('/editproduct',fileupload,ProductController.editproduct)
+
 
 module.exports = routes
 

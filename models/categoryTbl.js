@@ -4,6 +4,10 @@ const crudschema = mongoose.Schema({
     category : {
         type : String,
         require : true
+    },
+    status :{
+        type : String,
+        require : true
     }
 })
 

@@ -4,6 +4,10 @@ const port = 9090
 
 const app = express();
 
+const path = require('path')
+
+app.use('/uploads',express.static(path.join(__dirname,('uploads'))))
+
 const db = require('./config/mongoose')
 
 const passport = require('passport')
