@@ -8,6 +8,7 @@ const registerController = require('../Controller/registerLoginController')
 const categoryController = require('../Controller/categoryController')
 const SubcategoryController = require('../Controller/subCategoryController')
 const ProductController = require('../Controller/productController')
+const atcController = require('../Controller/AddToCategoryController')
 const fileupload = require('../config/fileupload')
 
 // Register And login
@@ -35,6 +36,11 @@ routes.get('/viewproduct',ProductController.viewproduct)
 routes.delete('/deleteproduct',ProductController.deleteproduct)
 routes.put('/editproduct',fileupload,ProductController.editproduct)
 
+//Add to Cart
+routes.post('/addtocart',atcController.addtocart)
+routes.get('/viewcart',atcController.viewcart)
+routes.delete('/deletecart',atcController.deletecart)
+routes.put('/editcart',atcController.editcart)
 
 module.exports = routes
 
