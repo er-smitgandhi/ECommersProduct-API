@@ -22,7 +22,7 @@ const addsubcategory = async(req,res)=>{
 
 const viewsubcategory = async(req,res)=>{
     try {
-        let viewsubcat = await subcategoryTbl.find({})
+        let viewsubcat = await subcategoryTbl.find({}).populate('categoryId')
         if(viewsubcat){
             return res.json({status : 1,message : viewsubcat})
         }

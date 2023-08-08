@@ -33,7 +33,7 @@ const addproduct = async (req, res) => {
 
 const viewproduct = async (req, res) => {
     try {
-        const viewproduct = await productTbl.find({});
+        const viewproduct = await productTbl.find({}).populate('categoryId').populate('subcategoryId')
         if (viewproduct) {
             return res.json({ status: 1, message: viewproduct });
         }

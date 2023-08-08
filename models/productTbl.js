@@ -2,12 +2,12 @@ const mongoose = require('mongoose')
 
 const crudschema = mongoose.Schema({
     categoryId : {
-        type : String,
-        require : true
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'catcrud'
     },
     subcategoryId : {
-        type : String,
-        require : true
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'subcatcrud'
     },
     pdcname : {
         type : String,
